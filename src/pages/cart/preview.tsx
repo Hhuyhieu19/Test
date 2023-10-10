@@ -6,6 +6,7 @@ import { Box, Button, Text, useSnackbar } from "zmp-ui";
 import { formDataState } from "../../utils/formState";
 import { useNavigate } from "react-router-dom";
 import { validationFunctions } from "utils/validation";
+import { formatDate, formatTime } from "utils/date";
 
 export const CartPreview: FC = () => {
   const quantity = useRecoilValue(totalQuantityState);
@@ -16,6 +17,8 @@ export const CartPreview: FC = () => {
   const navigate = useNavigate();
   const setFormData = useSetRecoilState(formDataState);
   const { isValidPhone, isValidEmail } = useRecoilValue(validationFunctions)
+  const roundedTotalPrice = Math.round(totalPrice);
+
   
   const { openSnackbar, closeSnackbar } = useSnackbar();
   const timemerId = useRef<number | null>(null);
@@ -26,6 +29,19 @@ export const CartPreview: FC = () => {
   
 
   const handleSendOrder = async () => {
+
+    
+    // Định dạng ngày và giờ trước khi gửi dữ liệu
+    const formattedCart = cart.map(item => {
+      if (item.selectedDate && item.selectedTime) {
+        return {
+          ...item,
+          selectedDate: formatDate(new Date(item.selectedDate)),
+          selectedTime: formatTime(new Date(item.selectedTime))
+        };
+      }
+      return item;
+    });
     
     if (!isFormDataComplete(formData)) {
       openSnackbar({
@@ -46,8 +62,8 @@ export const CartPreview: FC = () => {
         },
         body: JSON.stringify({
           formData,
-          cart,
-          totalPrice,
+          cart: formattedCart,
+          totalPrice: roundedTotalPrice,
         }),
       });
       if (!response.ok) {

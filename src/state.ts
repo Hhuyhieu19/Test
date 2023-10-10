@@ -1610,7 +1610,7 @@ export const notificationsState = atom<Notification[]>({
       content:
         "The Libra House cảm ơn bạn đã truy cập và sử dụng dịch vụ của chúng tôi !!! Hãy liên hệ với chúng tôi để nhận nhiều ưu đãi hấp dẫn !!!",
     },
-    
+
   ],
 });
 

@@ -90,6 +90,8 @@ export const ProductPicker: FC<ProductPickerProps> = ({
                 ...editing,
                 options,
                 quantity: existed ? existed.quantity + quantity : quantity,
+                selectedDate: currentSelectedDate, // Cập nhật ngày đã chọn
+                selectedTime: currentSelectedTime, // Cập nhật giờ đã chọn
               });
               if (existed) {
                 res.splice(cart.indexOf(existed), 1);
@@ -106,6 +108,8 @@ export const ProductPicker: FC<ProductPickerProps> = ({
             res.splice(cart.indexOf(existed), 1, {
               ...existed,
               quantity: existed.quantity + quantity,
+              selectedDate: currentSelectedDate, // Cập nhật ngày đã chọn
+              selectedTime: currentSelectedTime, // Cập nhật giờ đã chọn
             });
           } else {
             res = res.concat({
@@ -121,7 +125,8 @@ export const ProductPicker: FC<ProductPickerProps> = ({
       });
     }
     setVisible(false);
-  };
+};
+
 
   const [pickerType, setPickerType] = useState<"QuantityPicker" | "SessionPicker">("QuantityPicker");
 

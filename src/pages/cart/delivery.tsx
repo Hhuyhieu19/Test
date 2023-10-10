@@ -24,7 +24,7 @@ export const Delivery: FC = () => {
       openSnackbar({
         text: "Số điện thoại không hợp lệ ! Vui lòng nhập lại !!!",
         type: "error",
-        position: "bottom",
+        position: "top",
       });
     }
   
@@ -32,7 +32,7 @@ export const Delivery: FC = () => {
       openSnackbar({
         text: "Email không hợp lệ ! Vui lòng nhập lại !!!",
         type: "error",
-        position: "bottom",
+        position: "top",
       });
     }
   };

@@ -11,8 +11,6 @@ import { Box, Text } from "zmp-ui";
 export const CartItems: FC = () => {
   const cart = useRecoilValue(cartState);
   const [editingItem, setEditingItem] = useState<CartItem | undefined>();
-  const [selectedDate, setSelectedDate] = useState<number>(+new Date());
-  const [selectedTime, setSelectedTime] = useState<number>(+new Date());
 
   return (
     <Box className="py-3 px-4">
@@ -20,8 +18,8 @@ export const CartItems: FC = () => {
         <ProductPicker
           product={editingItem?.product}
           selected={editingItem}
-          selectedDate={selectedDate} // Truyền giá trị ngày đã chọn
-          selectedTime={selectedTime} // Truyền giá trị giờ đã chọn
+          selectedDate={editingItem?.selectedDate} // Truyền giá trị ngày đã chọn từ CartItem
+          selectedTime={editingItem?.selectedTime} // Truyền giá trị giờ đã chọn từ CartItem
         >
           {({ open }) => (
             <ListRenderer
@@ -54,6 +52,17 @@ export const CartItems: FC = () => {
                         {item.product}
                       </DisplaySelectedOptions>
                     </Text>
+                    {/* Hiển thị ngày và giờ đã chọn */}
+                    {item.selectedDate && (
+                      <Text className="text-gray" size="xxxSmall">
+                        Ngày: {new Date(item.selectedDate).toLocaleDateString()}
+                      </Text>
+                    )}
+                    {item.selectedTime && (
+                      <Text className="text-gray" size="xxxSmall">
+                        Giờ: {new Date(item.selectedTime).toLocaleTimeString()}
+                      </Text>
+                    )}
                   </Box>
                   <Text className="text-primary font-medium" size="small">
                     x{item.quantity}
