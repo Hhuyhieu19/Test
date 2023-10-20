@@ -20,9 +20,9 @@ const tabs: Record<string, MenuItem> = {
     activeIcon: <CartIcon active />,
   },
 
-  "/search": {
-    label: "Tìm kiếm",
-    icon: <Icon icon="zi-search" />,
+  "/profile": {
+    label: "Tài khoản",
+    icon: <Icon icon="zi-user" />,
   },
 };
 

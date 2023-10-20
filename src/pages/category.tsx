@@ -8,7 +8,6 @@ import {
 } from "state";
 import { Box, Header, Page, Tabs, Text } from "zmp-ui";
 import { CategoryId } from "types/category";
-import { categoriesData } from "types/box";// Import dữ liệu từ file box.ts
 
 const CategoryPicker: FC = () => {
   const categories = useRecoilValue(categoriesState);
@@ -31,26 +30,31 @@ const CategoryPicker: FC = () => {
 };
 
 const CategoryProducts: FC<{ categoryId: string }> = ({ categoryId }) => {
-  const category: CategoryId = categoryId as CategoryId;
-  const productsByCategory = useRecoilValue(productsByCategoryState(category));
-  const boxesData = categoriesData[category];
+  const category: CategoryId = categoryId as CategoryId; // Chuyển đổi categoryId thành kiểu CategoryId
+  const productsByCategory = useRecoilValue(
+    productsByCategoryState(category)
+  );
 
+
+  if (productsByCategory.length === 0) {
+    return (
+      <Box className="flex-1 bg-background p-4 flex justify-center items-center">
+        <Text size="xSmall" className="text-gray">
+          Không có sản phẩm trong danh mục
+        </Text>
+      </Box>
+    );
+  }
   return (
-    <Box className="bg-background p-4">
-      {boxesData.map((boxData) => (
-        <Box key={boxData.title} className="mb-4">
-          <Header title={boxData.title} />
-          <Box className="grid grid-cols-2 gap-4">
-            {boxData.productIds.map((productId) => {
-              const product = productsByCategory.find(p => p.id === Number(productId));
-              return product ? <ProductItem key={product.id} product={product} /> : null;
-            })}
-          </Box>
-        </Box>
+    <Box className="bg-background grid grid-cols-2 gap-4 p-4">
+      {productsByCategory.map((product) => (
+        <ProductItem key={product.id} product={product} />
       ))}
     </Box>
   );
 };
+
+
 
 const CategoryPage: FC = () => {
   return (

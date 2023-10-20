@@ -5,7 +5,7 @@ import { notificationsState } from "state";
 import { Box, Header, Modal, Page, Text } from "zmp-ui";
 import { Divider } from "components/divider";
 import { Notification } from "types/notification";
-import  img_modal from "static/banner_modal.jpg";
+import img from "static/banner_notification.jpg"
 
 const NotificationList: FC = () => {
   const notifications = useRecoilValue(notificationsState);
@@ -48,7 +48,7 @@ const NotificationList: FC = () => {
       <Modal
         visible={modalVisible}
         title={currentNotification?.title}
-        coverSrc={img_modal}
+        coverSrc= {img}
         onClose={closeModal}
         zIndex={1200}
         actions={[

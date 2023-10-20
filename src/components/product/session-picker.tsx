@@ -85,7 +85,7 @@ export const SessionPicker: FC<{
                         }}
                         data={[
                             {
-                                options: availableDates.map((date, i) => ({
+                                options: availableDates.map((date) => ({
                                     displayName: displayDate(date, true),
                                     value: +date,
                                 })),
@@ -117,7 +117,7 @@ export const SessionPicker: FC<{
                         }}
                         data={[
                             {
-                                options: availableTimes.map((time, i) => ({
+                                options: availableTimes.map((time) => ({
                                     displayName: displayHalfAnHourTimeRange(time),
                                     value: +time,
                                 })),

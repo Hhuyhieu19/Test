@@ -7,10 +7,9 @@ import bn1 from "static/banner-1.jpg";
 import bn2 from "static/banner-2.jpg";
 import bn3 from "static/banner-3.jpg";
 import bn4 from "static/banner-4.jpg";
-import bn5 from "static/banner-5.jpg";
 
 export const Banner: FC = () => {
-  const banners = [bn1, bn2, bn3, bn4, bn5];
+  const banners = [bn1, bn2, bn3, bn4];
 
   return (
     <Box className="bg-white" pb={4}>
