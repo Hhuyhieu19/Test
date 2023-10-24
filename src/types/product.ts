@@ -47,13 +47,3 @@ export interface Product {
   variants?: Variant[];
 }
 
-export interface Services {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-  categoryId: CategoryId[];
-  description?: string;
-  sale?: Sale;
-  variants?: Variant[];
-}

@@ -1,5 +1,5 @@
 import { atom, selector, selectorFamily, useRecoilValue, useRecoilState } from "recoil";
-import { getLocation, getPhoneNumber, getUserInfo } from "zmp-sdk";
+import { getPhoneNumber, getUserInfo } from "zmp-sdk";
 
 import service from "static/dichvu.svg";
 import product from "static/sanpham.svg";
@@ -34,6 +34,11 @@ import sp24 from "static/sp24.jpg";
 import sp25 from "static/sp25.jpg";
 import sp26 from "static/sp26.jpg";
 import sp27 from "static/sp27.jpg";
+import sp28 from "static/sp28.jpg";
+import sp29 from "static/sp29.jpg";
+import sp30 from "static/sp30.jpg";
+import sp31 from "static/sp31.jpg";
+
 
 import lt1 from "static/lt1.jpg";
 import lt2 from "static/lt2.jpg";
@@ -520,6 +525,7 @@ export const productsState = selector<Product[]>({
         id: 12,
         name: "Massage trị liệu cổ vai gáy",
         image: nb1,
+        categoriesImg: sp28,
         price: 549000,
         sale: {
           type: "fixed",
@@ -553,12 +559,12 @@ export const productsState = selector<Product[]>({
             ],
           },
         ], // Đảm bảo thêm mảng variants vào đây, ngay cả khi không có biến thể.
-      },
-      
+      },     
       {
         id: 13,
         name: "Gội đầu thảo dược",
         image: nb2,
+        categoriesImg: sp29,
         price: 299000,
         sale: {
           type: "fixed",
@@ -616,13 +622,13 @@ export const productsState = selector<Product[]>({
             ],
           },
         ],
-      },
-      
+      },      
       {
         id: 14,
         name: "Chăm sóc da mặt",
         price: 499000,
         image: nb3,
+        categoriesImg: sp30,
         description: "",
         categoryId: ["Services"],
         sale: {
@@ -663,12 +669,12 @@ export const productsState = selector<Product[]>({
             ],
           },
         ],
-      },
-      
+      },      
       {
         id: 15,
         name:"Triệt lông body",
         image: nb4,
+        categoriesImg: sp31,
         price: 2200000,
         categoryId:["Services"],
         description:"Triệt lông toàn thân - 1 buổi/2.000.000VND - Gói 10 buổi/16.000.000VND",
